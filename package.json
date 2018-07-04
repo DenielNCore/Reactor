@@ -1,0 +1,31 @@
+{
+  "name": "reactor",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "main.js",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "less": "^3.0.4"
+  },
+  "devDependencies": {
+    "less-watch-compiler": "^1.11.3"
+  },
+  "scripts": {
+    "less": "lessc less/main.less css/main.css",
+    "watch-less": "less-watch-compiler less css main.less",
+    "test": "startreactor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenielNCore/Reactor.git"
+  },
+  "keywords": [
+    "reactor"
+  ],
+  "author": "DenielNCore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DenielNCore/Reactor/issues"
+  },
+  "homepage": "https://github.com/DenielNCore/Reactor#readme"
+}
