@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Task 3</title>
+    <style>
+        #indecator {
+            display: none;
+            color: red;
+        }
+    </style>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        // сервер возвращает три статьи при обращении по указанным ссылкам
+        // http://edu.cbsystematics.com/temp/article.ashx?id=0
+        // http://edu.cbsystematics.com/temp/article.ashx?id=1
+        // http://edu.cbsystematics.com/temp/article.ashx?id=2
+        // Используя объект deffered создайте страницу, которая позволит получать статьи по отдельности или все статьи сразу.
+        // Добавьте на страницу индикатор загрузки, так как ответ от сервера может приходить с задержкой до 10 секунд
+
+        $(function () {
+
+            $("button[data-article]").click(function () {
+
+                $("#indecator").show();
+
+                $.ajax({
+                    url: "http://edu.cbsystematics.com/temp/article.ashx",
+                    type: "GET",
+                    data: "id=" + $(this).attr("data-article")
+                }).done(function (response) {
+                    $("#output").empty();
+                    $("#output").html(response);
+                }).done(function () {
+                    $("#indecator").hide();
+                });
+
+            });
+
+            $("#a-all").click(function () {
+                $("#indecator").show();
+                var p1 = $.ajax("http://edu.cbsystematics.com/temp/article.ashx?id=0");
+                var p2 = $.ajax("http://edu.cbsystematics.com/temp/article.ashx?id=1");
+                var p3 = $.ajax("http://edu.cbsystematics.com/temp/article.ashx?id=2");
+
+                $.when(p1, p2, p3).done(function (r1, r2, r3) {
+                    $("#output").html(r1[0] + " " + r2[0] + " " + r3[0]);
+                    $("#indecator").hide();
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <button id="a-1" data-article="0">Article 1</button>
+        <button id="a-2" data-article="1">Article 2</button>
+        <button id="a-3" data-article="2">Article 3</button>
+        <button id="a-all">All</button>
+        <p id="indecator">Loading</p>
+    </div>
+    <div id="output">
+
+    </div>
+</body>
+</html>

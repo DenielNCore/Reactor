@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Добавление элементов в DOM</title>
+    <script src="jQuery-2.1.1.js"></script>
+    <script>
+        function create1(arr) {
+            var parent = $("#parent");
+            $.each(arr, function () {
+                parent.append("<div>" + this + "</div>");
+            });
+        }
+
+        function create2(arr) {
+            var parent = $("#parent");
+            var html = ""
+            $.each(arr, function () {
+                html += "<div>" + this + "</div>";
+            });
+            parent.append(html);
+        }
+
+        function create3(arr) {
+            var parent = $("#parent");
+            var i = 0;
+            var html = [];
+            $.each(arr, function () {
+                html[i++] = "<div>";
+                html[i++] = this;
+                html[i++] = "</div>";
+            });
+            parent.append(html.join(''));
+        }
+
+        function create4(arr) {
+            var parent = $("#parent");
+            var i = 0;
+            var html = [];
+            for (var j = 0, len = arr.length; j < len; j++) {
+                html[i++] = "<div>";
+                html[i++] = arr[j];
+                html[i++] = "</div>";
+            }
+            parent.append(html.join(''));
+        }
+
+        var arr = [];
+        for (var i = 0; i < 10000; i++) {
+            arr.push(i);
+        }
+
+        $(function () {
+            console.time("sample 1");
+            create1(arr);
+            console.timeEnd("sample 1");
+
+            console.time("sample 2");
+            create2(arr);
+            console.timeEnd("sample 2");
+
+            console.time("sample 3");
+            create3(arr);
+            console.timeEnd("sample 3");
+
+            console.time("sample 4");
+            create4(arr);
+            console.timeEnd("sample 4");
+        });
+
+    </script>
+</head>
+<body>
+    <div id="parent"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Сохранение объектов</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            var object1 = { prop1: 1, prop2: "test" };
+            $("#div1").data("object1", object1);
+
+            console.log("prop1 = " + $("#div1").data("object1").prop1);
+            console.log("prop2 = " + $("#div1").data("object1").prop2);
+
+
+            var fn = function () {
+                console.log("hello");
+            }
+
+            $("#div1").data("fn", fn);
+            console.log($("#div1").data("fn")); // чтение значения 
+            $("#div1").data("fn")(); // запуск функции
+
+
+            var domElem = $("#div1").get(0);
+            // Первый параметр DOM элемент, а не jQuery объект.
+            // $.data дает большую производительность по сравнению с методом вызванным на jQuery объекте
+            $.data(domElem, "val1", 123);
+            console.log($.data(domElem, "val1"));
+        });
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

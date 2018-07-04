@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Цепочки областей видимости</title>
+</head>
+<body>
+    <script>
+        // BAD
+        console.time("global var");
+        var len = 1000000,
+            i = 0,
+            sum = 0;
+
+        function f1_global() {
+            function f2() {
+                function f3() {
+                    for (i = 0; i < len; i++) {
+                        sum += i;
+                    }
+                }
+                f3();
+            }
+            f2();
+        }
+        f1_global();
+        console.timeEnd("global var");
+
+        // GOOD
+        console.time("local var");
+        function f1_local() {
+            function f2() {
+                function f3() {
+                    var len = 1000000,
+                    i = 0,
+                    sum = 0;
+
+                    for (i = 0; i < len; i++) {
+                        sum += i;
+                    }
+                }
+                f3();
+            }
+            f2();
+        }
+        f1_local();
+
+        console.timeEnd("local var");
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>prop()</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                // получение значения атрибута
+                alert($("#cb").attr("checked"));
+            });
+
+            $("#btn2").click(function () {
+                // получение значения свойства DOM элемента
+                alert($("#cb").prop("checked"));
+            });
+        })
+    </script>
+</head>
+<body>
+    <button id="btn1">attr</button>
+    <button id="btn2">prop</button>
+
+    <input type="checkbox" checked="checked" id="cb" /> 
+    <!--<input type="checkbox" id="cb" />-->
+</body>
+</html>

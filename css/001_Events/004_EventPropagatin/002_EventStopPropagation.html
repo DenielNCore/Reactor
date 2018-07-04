@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Event Propogation</title>
+    <style>
+        div {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#myDiv").on("click", function (e) {
+                console.log("handler 1");
+            });
+
+            $("#myButton").on("click", function (e) {
+                console.log("handler 2");
+                // stopPropagation предотвращение дальнейшего распространения события
+                // так как данный обработчик сработает первым, он предотвратит распространение события
+                // и обработчик нажатия по элементу #myDiv не сработает
+                e.stopPropagation();
+            })
+        })
+    </script>
+</head>
+<body>
+
+    <div id="myDiv">
+        <button id="myButton">Click Me</button>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$.ajax options - url</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+
+            $("#btn").click(function () {
+
+                // Первый вариант
+                $.ajax({
+                    url: "../DataFiles/data.txt",
+                    success: function (data) {
+                        $("#output").html(data);
+                    }
+                });
+
+                // второй вариант
+                $.ajax("../DataFiles/data.txt", {
+                    success: function (data) {
+                        $("#output").html(data);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <button id="btn">Get</button>
+    <p id="output"></p>
+</body>
+</html>

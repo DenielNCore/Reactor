@@ -1,0 +1,35 @@
+﻿<!--
+
+   Создайте многомерный массив, который сможет служить в качесве таблицы умножения. 
+   См. код. 
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        var mulTable = new Array(10);
+
+        for (var i = 0; i < mulTable.length; i++) {
+            mulTable[i] = new Array(10); // В каждой строке 10 столбцов
+        }
+
+        // Инициализация массива
+        for (var row = 0; row < mulTable.length; row++) {
+            for (col = 0; col < mulTable[row].length; col++) {
+                mulTable[row][col] = row * col;
+            }
+        }
+
+        document.write("3 * 9 = " + mulTable[3][9]); // Должно вывести в документ 3 * 9 = 27
+        document.write("</br>");
+        document.write("5 * 7 = " + mulTable[5][7]); // Должно вывести в документ 5 * 7 = 35
+        // ....
+
+    </script>
+</body>
+</html>

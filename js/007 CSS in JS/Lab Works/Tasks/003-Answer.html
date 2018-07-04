@@ -1,0 +1,30 @@
+﻿<!-- 
+
+    Реалищуйте анимацию для элемента div с id="UFO". 
+    При нажатии на этот элемент он должен выполнять движение по окружности возвращаясь в первоначальное состояние. 
+
+    Подсказка: для эффекта движения по окружности свойство top должно изменяться по функции cos, а left по функции sin.
+
+-->
+<html>
+<head>
+    <style>
+        .example_block {
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            background-image: url(images/NLO.gif);
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        function move(elem) {
+            //... код, анимирующий движение тарелки по окружности
+        }
+    </script>
+</head>
+<body>
+    <div id="UFO" class="example_block" onclick="move(getElementById('UFO'))"></div>
+</body>
+</html>

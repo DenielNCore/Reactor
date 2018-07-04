@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Effects Slide Up</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //slideUp(скорость, функция) - после окончания анимации вызывается метод
+            $("button").click(function () {
+                //parent() получение родительского элемента относительно текущего (получение тэга в который вложен текущий тэг)
+                $(this).parent().slideUp("slow", function () {
+                    $("#msg").text("Кнопка " + $(this).text() + " спрятана");
+                });
+            });
+
+        });
+    </script>
+
+    <style type="text/css">
+        div {
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>
+            Hide One</button>
+        <input type="text" value="One" />
+    </div>
+    <div>
+        <button>
+            Hide Two</button>
+        <input type="text" value="Two" />
+    </div>
+    <div>
+        <button>
+            Hide Three</button>
+        <input type="text" value="Three" />
+    </div>
+    <div id="msg">
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Removing Data</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#div1").data("key1", "value-1");
+            $("#div1").data("key2", "value-2");
+
+            $("#div1").removeData("key1"); // удаление данных по ключу
+
+            console.log($("#div1").data());
+        });
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

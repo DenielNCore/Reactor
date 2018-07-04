@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Selector Performance</title>
+    <script src="jQuery-2.1.1.js"></script>
+    <script>
+        $(function () {
+            var length = 10000;
+            var e;
+
+            console.time("#items .list-item");
+            for (var i = 0; i < length; i++) {
+                e = $("#items .list-item")
+            }
+            console.timeEnd("#items .list-item");
+
+            console.time("#items h3.list-item");
+            for (var i = 0; i < length; i++) {
+                e = $("#items h3.list-item")
+            }
+            console.timeEnd("#items h3.list-item");
+
+            console.time("$(\"#items\").children(\".list-item\")");
+            for (var i = 0; i < length; i++) {
+                e = $("#items").children(".list-item");
+            }
+            console.timeEnd("$(\"#items\").children(\".list-item\")");
+
+            console.time("$(\"#items\").find(\".list-item\")");
+            for (var i = 0; i < length; i++) {
+                e = $("#items").find(".list-item");
+            }
+            console.timeEnd("$(\"#items\").find(\".list-item\")");
+        });
+    </script>
+</head>
+<body>
+    <ul id="items">
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+        <li>
+            <h3 class="list-item">Text</h3>
+        </li>
+    </ul>
+</body>
+</html>

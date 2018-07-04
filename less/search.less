@@ -1,0 +1,43 @@
+@import "styles.less";
+.empty {
+  width: 450px;
+  height: 550px;
+  background: blue;
+}
+.search {
+  background: red; //del
+  width: 450px;
+  height: 550px;
+
+  .searchBar {
+    background: green;
+    display: flex;
+    justify-content: center;
+
+    &::before {
+      content: url("../img/Shape.png");
+      width: 26px;
+      height: 27px;
+      margin: 5px;
+      position: relative;
+      top: 55px;
+      left: 37px;
+    }
+
+    input {
+      background-color: @back;
+      border: none;
+      border-bottom: 1px solid @bord;
+      color: white;
+      outline: none;
+      height: 46px;
+      width: 45%;
+      margin-top: 50px;
+      font-size: 1.5em;
+      padding-left: 40px;
+    }
+
+
+  }
+
+}

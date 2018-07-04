@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Храненеи данных</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            // запись значения
+            $("#div1").data("key1", 1);
+            $("#div1").data("key2", "test");
+
+            // чтение значений
+            console.log($("#div1").data("key1"));
+            console.log($("#div1").data("key2"));
+
+            // тип данных сохраняется при использовании data
+            console.log(typeof $("#div1").data("key1")); // number
+            console.log(typeof $("#div1").data("key2")); // string
+
+        });
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

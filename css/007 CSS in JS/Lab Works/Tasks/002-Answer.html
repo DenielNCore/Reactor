@@ -1,0 +1,28 @@
+﻿<!-- 
+   
+    Создайте анимацию для элемента div с id="plane".
+    При нажатии на этот элемент он должен перемещаться влево на 500 px. Продолжительность анимации определите на свое усмотрение. 
+     
+-->
+<html>
+<head>
+    <title></title>
+
+    <style>
+        .example_block {
+            width: 500px;
+            height: 250px;
+            position: absolute;
+            background-image: url(images/plane.png);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function move(elem) {
+          //... код, анимирующий летящий самолет
+        }
+</script>
+    <div id="plane" class="example_block" onclick="move(getElementById('plane'))"></div>
+</body>
+</html>

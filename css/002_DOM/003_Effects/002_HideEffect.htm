@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Effects Hide</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        // Hide - делает невидимым любой элемент если он отображается
+        $(document).ready(function () {
+
+            $("#hide1").click(function () {
+                $("p").hide();
+            })
+
+            $("#hide2").click(function () {
+                $("#div1").hide("slow"); // значения - slow, normal, fast
+                //$("#div1").hide(7000); // или время в милисекундах за которое должна пройти анимация
+            })
+
+            $("#hide3").click(function () {
+                $("#div2").hide("normal", Func); // 1 - скорости анимации 2 - функция, которая будет вызвана по окончанию анимации
+            })
+
+            function Func() {
+                alert("Not Visible");
+            }
+        });
+
+    </script>
+
+</head>
+<body>
+    <input id="hide1" type="button" value="Hide" />
+    <p>
+        Visible Text
+    </p>
+    <br />
+    <input id="hide2" type="button" value="Hide Slow" />
+    <div id="div1" style="background-color: Yellow; width: 100px; height: 100px;">
+    </div>
+    <br />
+    <input id="hide3" type="button" value="Hide And Run" />
+    <div id="div2" style="background-color: Yellow; width: 100px; height: 100px;">
+        <span>Visible Text</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Функция Animate() queue</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var animation = {
+                marginLeft: '150px',
+                marginTop: '150px',
+            };
+
+            var options = {
+                queue: false, // queue: fasle - заставляет вторую анимацию выполняться параллельно с первой
+                duration: 5000
+            };
+
+            $("div")
+                .animate(animation, options)
+                .animate(
+                {
+                    width: '50px',
+                    height: '50px'
+                }, 5000);
+        });
+
+    </script>
+
+</head>
+<body>
+    <div style="background-color: Green; width: 100px; height: 100px; text-align: center; ">
+    </div>
+</body>
+</html>

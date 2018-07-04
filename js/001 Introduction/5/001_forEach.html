@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Метод forEach</title>
+    <script>
+
+        // forEach - обход всех элементов массива и запуск определенной функции для каждого элемента.
+
+        var data = [1, 2, 3, 4, 5];
+        var sum = 0;
+        // получение суммы всех элементов
+        data.forEach(function (value) {
+            sum += value;
+        });
+        console.log(sum);
+
+        // увеличение каждого элемена массива на 1
+        data.forEach(function (value, index, array) {
+            array[index] = value + 1;
+        });
+        console.log(data);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

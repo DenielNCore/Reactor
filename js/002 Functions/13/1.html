@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function alphabetPosition(text) {
+        var arr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        var resArr=[];
+        resArr=text.toLowerCase().split('');
+        var result=[];
+        resArr.forEach(function (p1, p2, p3) {
+            for (i=0;i<arr.length;i++) {
+                if (p1==arr[i]) {
+                    result.push(i+1);
+                }
+            }
+        },0);
+        result=result.join(' ');
+        return result;
+
+    }
+    alert(alphabetPosition("The sunset sets at twelve o' clock."));
+</script>
+</body>
+</html>

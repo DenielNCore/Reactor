@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>querySelector vs getElementById</title>
+</head>
+<body>
+
+    <div id="test1"></div>
+    <div id="test2"></div>
+
+    <script>
+        // BAD
+        console.time("getElementById");
+        for (var i = 0; i < 1000; i++) {
+            test1.innerHTML += i + ", ";
+        }
+        console.timeEnd("getElementById");
+
+        // GOOD
+        console.time("querySelector");
+        for (var i = 0; i < 1000; i++) {
+            test2.innerHTML += i + ", ";
+        }
+        console.timeEnd("querySelector");
+    </script>
+</body>
+</html>

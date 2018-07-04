@@ -1,0 +1,32 @@
+﻿<!-- 
+
+    Реализуйте поиск средствами Ajax. 
+    Напишите тело метода searchNameq, который отправляет Http запрос на страницу testHandler.ashx.
+    Найденные города должны выводится в контейнер с id="search-result"
+
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        var http = new XMLHttpRequest();
+
+        function searchNameq() {
+            //... ваш код 
+        }
+    </script>
+</head>
+<body>
+    <p>Поиск с использованием AJAX</p>
+
+    <form method="post" action="/">
+        <div>
+            <input name="searchq" type="text" id="searchq" size="30" onkeyup="searchNameq()" />
+        </div>
+    </form>
+
+    <div id="search-result" style="padding: 10px;"></div>
+</body>
+</html>

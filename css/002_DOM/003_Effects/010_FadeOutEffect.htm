@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Effects FadeOut</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // fadeOut -  плавно делает элемент невидимым
+            $("p").click(function () {
+                $("p").fadeOut("slow");
+            });
+
+        });
+    </script>
+
+    <style type="text/css">
+        p {
+            font-size: 150%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Click me
+    </p>
+</body>
+</html>

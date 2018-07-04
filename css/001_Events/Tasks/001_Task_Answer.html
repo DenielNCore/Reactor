@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Task 1</title>
+    <style>
+        #button-panel {
+            width: 200px;
+            padding: 20px;
+            background-color: lightblue;
+            float: left;
+        }
+
+        #holder {
+            border: 1px solid black;
+            border-radius: 4px;
+            width: 600px;
+            height: 600px;
+            padding: 20px;
+            margin: 0 10px;
+            float: left;
+            position: relative;
+        }
+
+            #holder div {
+                border: 1px solid red;
+                border-radius: 2px;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+            }
+
+        .active {
+            background-color: orange;
+        }
+    </style>
+    <script src="jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#add").click(addNew);
+            $("#setColor").click(setColor);
+            $("#holder").on("mousedown", "div", setActive);
+            $("#holder").on("mousedown", "div", mouseDownHandler);
+            $("#holder").on("mouseup", "div", mouseUpHandler);
+            $("#holder").on("mousemove", null, mouseMoveHandler); // событие обрабатывается на #holder
+
+            function addNew() {
+                var div = $("<div></div>");
+
+                div.css({
+                    left: getRandom($("#holder").width()),
+                    top: getRandom($("#holder").height())
+                });
+
+                $("#holder").append(div);
+            }
+
+            function setColor() {
+                var color = $("input[type=radio]:checked").val();
+                $(".active").css("background-color", color);
+            }
+
+            function setActive(e) {
+                $(".active").removeClass("active");
+                $(e.target).addClass("active");
+            }
+
+            function getRandom(max) {
+                return 1 + Math.floor(Math.random() * max);
+            }
+
+            var offsetX = 0, offsetY = 0, moving = false;
+
+            function mouseDownHandler(e) {
+                offsetX = e.pageX - $(e.target).offset().left;
+                offsetY = e.pageY - $(e.target).offset().top;
+                moving = true;
+            }
+
+            function mouseUpHandler(e) {
+                offsetX = offsetX = 0;
+                moving = false;
+            }
+
+            function mouseMoveHandler(e) {
+                if (moving) {
+                    $(".active").css({
+                        left: e.pageX - $("#holder").offset().left - offsetX,
+                        top: e.pageY - $("#holder").offset().top - offsetY
+                    });
+                }
+            }
+        })
+    </script>
+
+</head>
+<body>
+    <div id="button-panel">
+        <button id="add">Add new rectangle</button>
+        <fieldset>
+            <legend>Color</legend>
+            <input type="radio" name="color" value="red" /> Red <br />
+            <input type="radio" name="color" value="green" /> Green <br />
+            <input type="radio" name="color" value="blue" /> Blue <br />
+            <button id="setColor">Set color</button>
+        </fieldset>
+    </div>
+    <div id="holder">
+    </div>
+</body>
+</html>

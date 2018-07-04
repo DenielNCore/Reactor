@@ -1,0 +1,46 @@
+﻿<!-- 
+    
+    Используя метод App.define, рассмотренный на уроке создайте пространство имен App.utils.shapes. В этом пространстве имен создайте конструктор Rectangle,
+    который будет принимать аргумент weight и height. В теле конструктора создайте частные свойтсва weight и height c методами доступа getWeight и getHeight.
+    В прототип класса Recatengle добавьте метод area, который будет возвращать площадь прямоугольника.
+
+-->
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        var App = App || {};
+
+        App.define = function (namespace) {
+            var parts = namespace.split("."),
+                parent = App,
+                i;
+
+            // убрать начальный префикс если это имя глобальной переменной
+            if (parts[0] == "App") {
+                parts = parts.slice(1); // ['utils', 'dom']
+            }
+
+            // если в глобальном объекте нет свойства - создать его.
+            for (i = 0; i < parts.length; i++) {
+
+                if (typeof parent[parts[i]] == "undefined") {
+                    parent[parts[i]] = {};
+                }
+
+                parent = parent[parts[i]];
+            }
+            return parent;
+        }
+    </script>
+
+    <script>
+        //**********************************************************************************
+        // Тут должен быть код, создающий пространство имен "utils.shapes" и класс Rectangle
+        //**********************************************************************************
+    </script>
+
+</body>
+</html>

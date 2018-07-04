@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$.ajax callbacks</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+
+        // http://edu.cbsystematics.com/temp/getHandler.ashx - обрабатывает GET запросы с двумя параметрами 'a' и 'b'
+        // При отсутствии значений или если значения не целочисленные, возвращает статус код 500
+        // тип ответа text/plain
+
+        $(function () {
+
+            $("#btn").click(function () {
+
+                $.ajax({
+                    url: "http://edu.cbsystematics.com/temp/getHandler.ashx",
+                    type: "GET",
+                    data: {
+                        a: $("#a").val(),
+                        b: $("#b").val(),
+                    },
+                    success: function (response, status, xhr) {
+                        $("#output").html(response);
+                        console.log("success xhr", xhr);
+                        console.log("success status", status);
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log("error xhr", xhr);
+                        console.log("error status", status);
+                        console.log("error errorThrown", errorThrown);
+                    },
+                    complete: function (xhr, status) {
+                        console.log("completed xhr ", xhr);
+                        console.log("completed status", status);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <input id="a" type="text" value="0" /> +
+    <input id="b" type="text" value="0" /> = <span id="output"></span>
+
+    <button id="btn">GET Request</button>
+</body>
+</html>

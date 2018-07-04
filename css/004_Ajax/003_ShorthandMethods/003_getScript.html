@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>getScript shorthand method</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+
+            $("#btn").click(function () {
+
+                $.getScript("../DataFiles/test.js", function () {
+                    console.log("script loaded");
+                });
+
+                //$.ajax({
+                //    url: url,
+                //    dataType: "script",
+                //    success: success
+                //});
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <button id="btn">Get</button>
+    <p id="output"></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!-- 
+
+    Напишите регулярное выражение, которое сможет проверить правильность указанного номера телефона.
+    Формат ввода номера телефона должен быть следующим: ###-###-####, где # - цифра
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        var re = / /;               // <= Реализуйте регулярное выражение 
+
+        function testPhone() {
+            check(document.getElementById('phone'));
+        }
+
+        function check(phoneInput) {
+            var OK = re.exec(phoneInput.value);
+            if (!OK)
+                window.alert(phoneInput.value + " - неправильный формат номера телефона.");
+            else
+                window.alert("Спасибо! Ваш номер телефона: " + OK[0]);
+        }
+    </script>
+</head>
+<body>
+    <p>
+        Введите свой номер телефона и нажмите "Проверить".
+        <br>
+        Формат номера телефона: ###-###-####.
+    </p>
+    <form action="#">
+        <input id="phone">
+        <button onclick="testPhone();">Check</button>
+    </form>
+</body>
+</html>

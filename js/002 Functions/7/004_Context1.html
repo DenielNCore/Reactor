@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Context</title>
+    <script>
+		// Контекст - объект, на который указывает ключевое слово this в момент вызова функции.
+        function contextTest1() {
+            console.log(this === window); // true
+        }
+
+        // При вызове функции контекстом является глобальный объект winodw
+        contextTest1();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

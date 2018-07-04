@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>text()</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        //text() - функция полчает текстовый контент выбранного элемента.
+
+        // При загрузке документа сработает функция Start.
+        $(document).ready(Start);
+
+        function Start() {
+            $("p").click(function () {
+                alert($(this).text());
+                //alert($(this).html());
+            });
+        }
+        
+    </script>
+
+    <style type="text/css">
+        p
+        {
+            background-color: Green;
+            color: White;
+            padding: 4px;
+            font-family: Verdana;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <b>Test</b> string 1
+    </p>
+    <p>
+        Test string 2
+    </p>
+</body>
+</html>

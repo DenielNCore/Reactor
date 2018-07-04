@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Custom Events</title>
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script>
+        function Timer(interval) {
+            var $this = $(this);
+
+            function tickInvoke() {
+                $this.trigger("tick"); // запуск события tick
+            }
+
+            setInterval(tickInvoke, interval);
+
+            return $this;
+        }
+
+        var timer = new Timer(1000);
+
+        timer.on("tick", function (e) { // обработка события tick
+            console.log("tick handler " + e.timeStamp);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

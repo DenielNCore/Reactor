@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Toggle simple 2</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#button1").click(function () {
+
+                $("p").toggle(5000);
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <p style="background-color: red">
+        Параграф №1.
+    </p>
+    <p style="background-color: yellow">
+        Параграф №2.
+    </p>
+    <p style="background-color: green">
+        Параграф №3.
+    </p>
+    <p style="background-color: aqua">
+        Параграф №4.
+    </p>
+    <p style="background-color: gray">
+        Параграф №5.
+    </p>
+    <input type="button" id="button1" value="Show/Hide" />
+</body>
+</html>

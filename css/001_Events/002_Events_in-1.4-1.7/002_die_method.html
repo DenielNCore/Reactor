@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>die метод</title>
+    <script src="jquery.1.4.js"></script>
+    <script>
+        $(function () {
+            // добавление обработчика на событие click
+            $("#btn").live("click", handler);
+
+            $("#btnRemove").live("click", function () {
+                // die - удаляет обработчик события
+                // die метод считается устаревшим с версии 1.7 и удален в версии 1.9
+                $("#btn").die("click", handler);
+            });
+
+            function handler() {
+                alert("Hello world")
+            }
+
+        })
+    </script>
+</head>
+<body>
+    <button id="btn">Click Me</button><br />
+    <button id="btnRemove">Remove Handler</button>
+</body>
+</html>

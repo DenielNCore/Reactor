@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Обращение к DOM элементам из циклов</title>
+</head>
+<body>
+
+    <div id="test1"></div>
+    <div id="test2"></div>
+
+    <script>
+        // BAD
+        console.time("DOM in cycle");
+        for (var i = 0; i < 1000; i++) {
+            // обращаться к DOM на каждой итерации цикла не оптимально.
+            document.getElementById("test1").innerHTML += i + ", ";
+        }
+        console.timeEnd("DOM in cycle");
+
+        console.time("DOM outside cycle");
+        var i, msg = "";
+        for (i = 0; i < 1000; i++) {
+            msg += i + ", ";
+        }
+        document.getElementById("test2").innerHTML += msg;
+        console.timeEnd("DOM outside cycle");
+    </script>
+</body>
+</html>

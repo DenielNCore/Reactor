@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>preventDefault</title>
+    <style>
+        div {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script>
+        $(function () {
+            $("#myDiv").on("click", function (e) {
+                console.log("handler 1");
+            });
+
+            $("#myLink").on("click", function (e) {
+                console.log("handler 2");
+                // отмена действия по умолчанию, которое браузер связывает с событием.
+                // например, для события click элемента а браузер выполняет запрос по адресу указанному в ссылке
+                if ($("input[type=checkbox]:first").is(":checked")) {
+                    e.preventDefault();
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+
+    <div id="myDiv">
+        <a id="myLink" href="http://itvdn.com/ru/">itvdn.com</a>
+    </div>
+
+    <input type="checkbox" value="isPreventDefault" /> Prevent Default
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование when</title>
+</head>
+<body>
+
+    <p id="output"></p>
+
+    <script src="jquery-2.1.1.min.js"></script>
+    <script>
+        // when - объединяет один или более deferred объектов
+        // функция возвращает promise объект
+        // promise переходит в состояние fulfilled только, когда все deferred объекты переходят в состояние resolved
+        // если хотя бы один deferred объект переходит в состояние rejected
+
+        $.when($.ajax("data1.txt"), $.ajax("data2.txt")).done(function (r1, r2) {
+            $("#output").text(r1[0] + " " + r2[0]);
+        });
+
+    </script>
+</body>
+</html>
+
+

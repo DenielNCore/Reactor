@@ -1,0 +1,45 @@
+﻿<!-- 
+
+    Реалищуйте анимацию для элемента div с id="UFO". 
+    При нажатии на этот элемент он должен выполнять движение по окружности возвращаясь в первоначальное состояние. 
+
+    Подсказка: для эффекта движения по окружности свойство top должно изменяться по функции cos, а left по функции sin.
+
+-->
+<html>
+<head>
+    <style>
+        .example_block {
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            background-image: url(images/NLO.gif);
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        function move(elem) {
+            var count = 0;
+            var maxCount = 300;
+            // функция для отрисовки
+            function frame() {
+                // Увеличиваем отступ
+                count++;
+                // Смещаем элемент
+                elem.style.left = 200 + 100 * Math.cos((2 * Math.PI / maxCount) * count) + 'px';
+                elem.style.top = 200 + 100 * Math.sin((2 * Math.PI / maxCount) * count) + 'px';
+                // Если выполнено 500 итераций анимации 
+                if (count == maxCount) {
+                    // завершить анимацию
+                    clearInterval(timer);
+                }
+            }
+            var timer = setInterval(frame, 10) // рисовать каждые 10мс
+        }
+    </script>
+</head>
+<body>
+    <div id="UFO" class="example_block" onclick="move(getElementById('UFO'))"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>event.stopImmediatePropagation demo</title>
+    <style>
+        p {
+            height: 30px;
+            width: 150px;
+            background-color: #ccf;
+        }
+
+        div {
+            height: 30px;
+            width: 150px;
+            background-color: #cfc;
+        }
+    </style>
+    <script src="../jquery.1.11.1.js"></script>
+</head>
+<body>
+    <p>paragraph</p>
+    <div>division</div>
+
+    <script>
+        $("p").click(function (event) {
+            event.stopImmediatePropagation(); // отменить запуск остальных обработчиков и распространение событие по DOM
+        });
+
+        $("p").click(function (event) {
+            // Обработчик не запустится
+            $(this).css("background-color", "#f00");
+        });
+
+        $("div").click(function (event) {
+            // обработчик сработает
+            $(this).css("background-color", "#f00");
+        });
+    </script>
+</body>
+</html>

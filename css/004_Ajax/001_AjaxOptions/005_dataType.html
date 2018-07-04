@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$.ajax options - dataType</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+
+        // http://edu.cbsystematics.com/temp/jsonHandler.ashx - возвращает ответ application/json со следующим значением
+        // {"prop1":"Value 1","prop2":"Value 2","prop3":"Value 3"}
+
+        $(function () {
+
+            $("#btn").click(function () {
+
+                $.ajax({
+                    url: "http://edu.cbsystematics.com/temp/jsonHandler.ashx",
+                    type: "GET",
+                    dataType: "json", // jQuery десериализует ответ в JavaScript объект
+                    success: function (data) { // data - объект со свойствами prop1, prop2, prop3
+                        $("#output").append(data.prop1 + "<br />");
+                        $("#output").append(data.prop2 + "<br />");
+                        $("#output").append(data.prop3 + "<br />");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <button id="btn">GET Request</button>
+    <p id="output"></p>
+</body>
+</html>
+
+

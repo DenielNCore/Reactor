@@ -1,0 +1,31 @@
+﻿<!--
+
+     Реализуйте функцию toCamelCase. Эта функция должна удалять символы "-" из исходной строки, 
+     заменяя их на пробельный символ, а так же переводить в верхний регистр первый символ после символа "-". 
+
+     Например:
+     toCamelCase("background-color") должно вернуть backgroundColor
+-->
+
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<script>
+
+    function toCamelCase(str) {
+        var arr=str.split('-');
+        for (i=1;i<arr.length;i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase()+arr[i].slice(1);
+        }
+
+        return arr.join(' ');
+    }
+
+    alert(toCamelCase("background-color")); // должно вывести backgroundСolor
+    alert(toCamelCase("list-style-image")); // должно вывести listStyleImage
+
+</script>
+
+</body>
+</html>
+

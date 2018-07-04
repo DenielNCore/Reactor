@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Wrap</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".a").wrap("<div></div>"); // wrap - помещает каждый элемент .a в div 
+            $(".b").wrapAll("<div></div>"); // wrapAll - помещает все элементы .b в div
+            $(".c").wrapInner("<div></div>"); // wrapInner - помещает дочерние элементы .c в элемент div
+        });
+    </script>
+
+    <style type="text/css">
+        div {
+            background-color: Blue;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        span {
+            background-color: White;
+        }
+    </style>
+</head>
+<body>
+    <span class="a">Paragraph 1</span>
+    <span class="a">Paragraph 2</span>
+    <span class="b">Paragraph 3</span>
+    <span class="b">Paragraph 4</span>
+    <span class="c">Paragraph 5</span>
+    <span class="c">Paragraph 6</span>
+</body>
+</html>

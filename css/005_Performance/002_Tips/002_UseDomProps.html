@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using DOM Properties</title>
+
+    <script src="jQuery-2.1.1.js"></script>
+    <script>
+
+        $(function () {
+
+            // BAD
+            console.time("jQuery method");
+            var div = $("#myDiv");
+            for (var i = 0; i < 10000; i++) {
+                var id = div.attr("id");
+            }
+            console.timeEnd("jQuery method");
+
+            // GOOD
+            console.time("DOM property");
+            var div = $("#myDiv");
+            for (var i = 0; i < 10000; i++) {
+                var id = div.id;
+            }
+            console.timeEnd("DOM property");
+        });
+    </script>
+
+</head>
+<body>
+    <div id="myDiv"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>status codes</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#btn").click(function () {
+
+                $.ajax({
+                    url: "http://edu.cbsystematics.com/temp/article.ashx",
+                    type: "GET",
+                    data: { id: $("#a").val() },
+                    // установка обработчиков на разные статус коды
+                    statusCode: {
+                        200: function (data) {
+                            $("#output").html(data);
+                        },
+                        404: function () { // введите в поле ввода значение больше 2
+                            $("#output").html("Not Found");
+                        },
+                        500: function () { // Введите в поле ввода текст
+                            $("#output").html("Internal Server Error");
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <input id="a" type="text" value="0" />
+    <button id="btn">Read</button>
+    <span id="loading" style="display:none;">Loading</span>
+    <p id="output"></p>
+
+
+</body>
+</html>

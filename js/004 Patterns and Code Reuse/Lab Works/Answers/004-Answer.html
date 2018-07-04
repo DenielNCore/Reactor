@@ -1,0 +1,29 @@
+﻿<!-- 
+     Напишите пример, который доказывал бы, что при использовании шаблона "заимствование конструктора" не наследуются свойства прототипа родителя.
+-->
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function Animal(name) {
+            this.name = name;
+        }
+
+        Animal.prototype.eat = function () {
+            console.log(this.name + 'eats');
+        }
+
+        function Cat(name) {
+            // Вызов конструктора Parent с передачей ссылки на пустой объект, который должна заполнить данная функция конструктор.
+            // По сути в этом конструкторе копируются все свойства из объекта Parent в объект Child.
+            Animal.apply(this, arguments);
+        }
+
+        var tom = new Cat("Tom");
+        console.log(tom.name);  // Будет выведено "Tom"
+        tom.eat();              // Появится ошибка, потому что метод eat не был унаследован 
+    </script>
+</body>
+</html>

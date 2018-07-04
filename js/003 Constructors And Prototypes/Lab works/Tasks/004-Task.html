@@ -1,0 +1,90 @@
+﻿<!--
+
+    Переопределите метод toString, euqals, compareTo и valueOf в классе LineSegment.
+    Проверьте их работу запустив пример.
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        // Импортируем функции Math.Pow и Math.sqrt в глобальное простраство
+        var secondPower = function (x) { return Math.pow(x, 2); };
+        var sqrt = Math.sqrt;
+
+        // Создаем конструктор LineSegment
+        function LineSegment(x1, y1, x2, y2) {
+
+            this.x1 = x1;
+            this.y1 = y1;
+
+            this.x2 = x2;
+            this.y2 = y2;
+        }
+        // Добавляем в прототип функцию, которая будет считать длину отрезка
+        LineSegment.prototype.length = function () {
+            var length = sqrt(secondPower(this.x1 - this.x2) + secondPower(this.y1 - this.y2));
+            return length;
+        }
+        // Переопределяем toString
+        LineSegment.prototype.toString = function () {
+            //... Ваш код
+        }
+        // Переопределяем valueOf
+        LineSegment.prototype.valueOf = function () {
+            //... Ваш код
+        }
+        // Переопределяем equals
+        LineSegment.prototype.equals = function (that) {
+            //... Ваш код
+        }
+        // Переопределяем compareTo
+        LineSegment.prototype.compareTo = function (that) {
+            //... Ваш код
+        }
+
+        // Создаем две точки
+        var ls1 = new LineSegment(5, 10, 10, 5);
+        var ls2 = new LineSegment(5, 10, 10, 12);
+
+        // До конца примера проверяем работу переопределенных методов
+        console.log("Line segment1 :" + ls1);
+        console.log("</br>Line segment2 :" + ls2);
+
+        console.log("</br>Line segment1 coords: " + ls1.toString());
+        console.log("</br>Line segment2 coords: " + ls2.toString());
+
+        if (ls1 > ls2) document.write("</br>Line segment1 > Line segment2");
+        else document.write("</br>Line segment1 < Line segment2");
+
+        document.write("</br>Line segment1 == Line segment2: " + (ls1 == ls2));
+
+        document.write("</br>Line segment1 equals Line segment2: " + ls1.equals(ls2));
+
+
+        document.write("<br/><br/>использование compareTo()<br/>");
+        if (ls1.compareTo(ls2) > 0)/*rect1 > rect2*/ {
+            document.write("Объкет rect1 > rect2<br />");
+        }
+        if (ls1.compareTo(ls2) < 0)/*rect1 < rect2*/ {
+            document.write("Объкет rect1 < rect2<br />");
+        }
+        if (ls1.compareTo(ls2) <= 0)/*rect1 <= rect2*/ {
+            document.write("Объкет rect1 <= rect2<br />");
+        }
+        if (ls1.compareTo(ls2) >= 0)/*rect1 >= rect2*/ {
+            document.write("Объкет rect1 >= rect2<br />");
+        }
+        if (ls1.compareTo(ls2) == 0)/*rect1 == rect2*/ {
+            document.write("Объкет rect1 == rect2<br />");
+        }
+        if (ls1.compareTo(ls2) != 0)/*rect1 != rect2*/ {
+            document.write("Объкет rect1 != rect2<br />");
+        }
+
+    </script>
+</body>
+</html>

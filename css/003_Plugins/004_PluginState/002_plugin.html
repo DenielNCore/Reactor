@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Хранение состояния плагина</title>
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script>
+        (function ($) {
+            $.fn.changeColor = function () {
+
+                if (!this.data("currentColor")) {
+                    this.data("currentColor", 0)
+                }
+                var currentColor = this.data("currentColor"); // значение хранится для каждого элемента отдельно
+                currentColor++;
+                this.data("currentColor", currentColor)
+
+                if (currentColor == 1) {
+                    return this.css("background-color", "yellow");
+                } else if (currentColor == 2) {
+                    return this.css("background-color", "orange");
+                } else {
+                    return this.css("background-color", "red");
+                }
+            }
+
+        })(jQuery);
+
+
+        $(function () {
+            $("#btn1").on("click", function () {
+                $("#div1").changeColor();
+            });
+
+            $("#btn2").on("click", function () {
+                $("#div2").changeColor();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="div1" style="width:200px; height:40px;">
+        div 1
+    </div>
+    <button id="btn1">change 1</button>
+
+    <div id="div2" style="width:200px; height:40px;">
+        div 2
+    </div>
+    <button id="btn2">change 2</button>
+</body>
+</html>

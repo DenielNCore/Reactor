@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Creating Elements</title>
+
+    <style>
+        div {
+            border: 1px solid black;
+            margin: 10px;
+            height: 40px;
+        }
+
+        .test {
+            background-color: aquamarine;
+        }
+    </style>
+
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            var a = $("div"); // получение элементов div
+            var b = $("<div></div>"); // создание нового элемента div
+            var c = $("<div/>"); // создание нового элемента div
+            var d = $("<div/>", {
+                "class": "test",
+                html: "<b>Hello world</b>",
+                click: function () {
+                    alert("hello world");
+                }
+            }); // создание нового элемента div
+
+            // добавление узлов в DOM
+            b.appendTo("body");
+            c.appendTo("body");
+            $("body").append(d);
+
+            // создание элемента и добавление его в DOM
+            $("<div class='test'><b>hello world</b></div>")
+                .click(function () { alert("hello world") })
+                .appendTo("body");
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

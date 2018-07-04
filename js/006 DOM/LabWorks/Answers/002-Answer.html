@@ -1,0 +1,59 @@
+﻿<!-- 
+
+    Реализуйте функцию getText(n), которая возвращает текстовое содержимое элемента n и всех его дочерних элементов.    
+    
+-->
+
+<html>
+<head>
+    <title></title>
+    <script>
+        function getText(n) {
+
+            // Чтобы не использовать много операций конкатенации создадим массив строк,
+            // который в будущем превратим в однк строку с помощью метода join
+            var strings = [];
+            // Обходим дочерние узлы и помещаем текстовое содержимое в массив
+            getStrings(n, strings);
+            // Объединяем элементы массива в одну строку и возвращаем её
+            return strings.join("");
+
+            // Рекурсивная функция для обхода элементов и поиска текстового содержимого
+            function getStrings(n, strings) {
+
+                // Если это TEXT_NODE
+                if (n.nodeType == 3)
+                    // Помещаем содержимое в массив
+                    strings.push(n.data);
+                    // Иначе если это ELEMENT_NODE 
+                else if (n.nodeType == 1) {
+                    // Рекурсивно проходим по дочерним элементам и ищем текст
+                    for (var m = n.firstChild; m != null; m = m.nextSibling) {
+                        getStrings(m, strings);
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        window.onload = function () {
+
+            var text = getText(document.getElementById("container"));
+            alert(text);
+            // Должно выводится: 
+            // Paragraph1.
+            // Paragraph2.
+            // Paragraph3.
+        }
+    </script>
+</head>
+<body>
+
+    <div id="container">
+        <p>Paragraph1.</p>
+        <p>Paragraph2.</p>
+        <p>Paragraph3.</p>
+    </div>
+</body>
+</html>

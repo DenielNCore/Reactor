@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Метод some and every</title>
+    <script>
+
+        // every - функция вовращает true если все элементы удовлетворяют условие.
+        // some - функция вовращает true если хотя бы один элемент удовлетворяет условие.
+
+        var data1 = [1, 2, 3, 4, 5, 6];
+        var data2 = [11, 21, 31, 41];
+        var data3 = [1, 3, 5, 7, 9];
+        var data4 = [1, 3, 5, 7, 8, 9];
+
+        var res1 = data1.every(function (value) {
+            return value > 10;
+        });
+
+        var res2 = data2.every(function (value) {
+            return value > 10;
+        });
+
+        var res3 = data3.some(function (value) {
+            return value % 2 == 0;
+        });
+
+        var res4 = data4.some(function (value) {
+            return value % 2 == 0;
+        });
+
+        console.log(res1);
+        console.log(res2);
+        console.log(res3);
+        console.log(res4);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

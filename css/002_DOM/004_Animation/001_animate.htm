@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Функция Animate()</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        // функция animate() - принимает желаемые CSS значения объекта и время за которые эти значения должны быть установлены.
+
+        $(document).ready(function () {
+            $("div").animate(
+                {
+                    opacity: 0.25, // меняем значение прозрачности с текущего до 0.25
+                    left: '150px' // меняем left с текущего до 150px
+                }, 5000);
+        });
+
+    </script>
+    <style type="text/css">
+        #id1 {
+            background-color: Green;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            color: White;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="id1">
+        Test div
+    </div>
+</body>
+</html>

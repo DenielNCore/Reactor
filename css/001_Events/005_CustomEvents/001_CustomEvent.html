@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Custom Events</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+
+            // Создание обработчика для не существующего события myEvent
+            $("div").on("myEvent", function () {
+                $(this).css("background-color", "lightblue");
+            })
+
+            $("button").on("click", function () {
+                // Запуск события myEvent
+                $("div").trigger("myEvent");
+            })
+        })
+    </script>
+    <style>
+        div {
+            background-color:lightgreen;
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        My div
+    </div>
+    <button>Fire Event</button>
+</body>
+</html>

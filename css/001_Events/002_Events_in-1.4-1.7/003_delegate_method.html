@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование метода delegate</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            
+            // Создание обработчика на событие click для всех элементов button, которые находятся в элементе #holder
+            $("#holder").delegate("button", "click", function (e) {
+                $("#output").text("Event occurred! " + e.timeStamp);
+            });
+
+            $("#addbtn").click(function () {
+                $("#holder").append("<button>Click Me</button>")
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <button id="addbtn">Add new button</button>
+    <div id="holder">
+        <button id="btn">Click Me</button>
+    </div>
+    <p id="output"></p>
+</body>
+</html>

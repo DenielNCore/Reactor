@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Оптимизация циклов</title>
+</head>
+<body>
+    <script>
+        window.onload = function () {
+            var f = document.createDocumentFragment();
+            for (var i = 0; i < 10000; i++) {
+                f.appendChild(document.createElement("div"));
+            }
+            document.body.appendChild(f);
+
+
+            var divs = document.querySelectorAll("div");
+
+            var e;
+            console.profile()
+            for (var i = 0; i < divs.length; i++) {
+                e = divs[i];
+            }
+            console.profileEnd()
+
+            console.profile()
+            for (var i = 0; divs[i]; i++) {
+                e = divs[i];
+            }
+            console.profileEnd()
+
+            console.profile()
+            for (var i = 0, len = divs.length; i < len; i++) {
+                e = divs[i];
+            }
+            console.profileEnd()
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿<!-- 
+    
+    Реализуйте метод SendRequest, который отправляет Http запрос на страницу CalcHandler.ashx для нахождения 
+    суммы значений введенных в элемент с id="data_1" и id="data_2"
+    Полученный результат запишите в элемент с id="response"
+-->
+
+<html>
+<head>
+    <style>
+        table {
+            margin: 50px auto;
+            width: 600px;
+            border-collapse: collapse;
+        }
+
+        th {
+            width: 300px;
+            padding: 5px;
+            background-color: #F0F0F0;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td {
+            padding: 5px;
+            border: 1px dotted black;
+            text-align: center;
+            vertical-align: top;
+        }
+    </style>
+
+    <script>
+
+        var http = new XMLHttpRequest();
+
+        function sendRequest() {
+
+            var summand1 = document.getElementById("data_1").value;
+            var summand2 = document.getElementById("data_2").value;
+
+            http.open('get', "CalcHandler.ashx?data_1=" + summand1 + "&data_2=" + summand2);
+            http.onreadystatechange = displayRes;
+            http.send(null);
+        }
+
+        function displayRes() {
+
+            if (http.readyState == 4 && http.status == 200) {
+
+                var responseText = http.responseText;
+                document.getElementById("response").innerHTML = responseText;
+            }
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Запрос</th>
+            <th>Ответ сервера</th>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    Переменная 1:
+                    <input type="text" size="10" id="data_1" /></label><br />
+                <label>
+                    Переменная 2:
+                    <input type="text" size="10" id="data_2" /></label><br />
+                <button onclick="sendRequest();">Послать запрос</button>
+            </td>
+            <td>
+                <div id="response"></div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

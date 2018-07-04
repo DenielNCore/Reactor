@@ -1,0 +1,48 @@
+<!--
+
+   Реализуйте функцию findUnique таким образом, чтобы она возвращала массив, 
+   состоящий из элементов исходного массива без повторений.
+
+    Прим. 
+      Для этого попробуйте использовать метод reduce().
+
+-->
+
+<html>
+<head>
+    <title>Интеграция JavaScript</title>
+
+    <script type="text/javascript">
+
+        function findUnique(arr) {
+            // Результирующий массив
+            var result = [];
+
+            arr.reduce(function (resultRef, curItem) {
+                // Если текущего элемента еще нет в результирующем массиве 
+                if (resultRef.indexOf(curItem) === -1) {
+                    // Добавляем его
+                    resultRef.push(curItem);
+                }
+                // Передаем ссылку на результирующий массив в следующий вызов метода reduce
+                return resultRef;
+            }, result);
+
+            return result;
+        }
+
+
+        var initialArr = [1, 2, 3, 1, 5, 3, 4, 1];
+
+        var unique = findUnique(initialArr);
+
+        document.write("Initial array: " + initialArr);
+        document.write("</br>");
+        document.write("Unique elements: " + unique);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

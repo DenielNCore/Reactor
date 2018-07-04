@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$.ajaxSetup</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+
+        // http://edu.cbsystematics.com/temp/postHandler.ashx - обрабатывает POST запросы с двумя параметрами 'a' и 'b'
+        // При отсутствии значений или если значения не целочисленные, возвращает статус код 500
+        // тип ответа text/plain
+
+        $(function () {
+
+            // глобальные настройки для всех ajax запросов
+            $.ajaxSetup({
+                url: "http://edu.cbsystematics.com/temp/postHandler.ashx",
+                type: "POST",
+                success: function (data) {
+                    $("#output").html(data);
+                }
+            });
+
+            $("#btn1").click(function () {
+                $.ajax({
+                    data: {
+                        a: 1,
+                        b: 2,
+                    }
+                });
+            });
+
+            $("#btn2").click(function () {
+                $.ajax({
+                    data: {
+                        a: 10,
+                        b: 20,
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <p id="output"></p>
+
+    <button id="btn1">a = 1, b = 2</button>
+    <button id="btn2">a = 10, b = 20</button>
+</body>
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>classList</title>
+    <script>
+
+        // Пример из книги "JavaScript: The Definitive Guide, Sixth Edition by David Flanagan" стр 438.
+
+        // classList свойства HTML5, которое позволяет получить доступ к данным о CSS классах использующихся элементом.
+        function classList(e) {
+            if (e.classList) return e.classList; // возвращаем e.classList если существует
+            else return new CSSClassList(e); // если свойства нет создаем объект имитирующий такое же поведение
+        }
+
+        // CSSClassList это JavaScript кла который имитирует поведение класса DOMTokenList
+        function CSSClassList(e) { this.e = e; }
+
+        // Возвращает true если e.className содержит класс c, иначе false
+        CSSClassList.prototype.contains = function (c) {
+            // Проверка что c валидное имя класса
+            if (c.length === 0 || c.indexOf(" ") != -1)
+                throw new Error("Invalid class name: '" + c + "'");
+            // Check common cases first
+            var classes = this.e.className;
+            if (!classes) return false; // e не содержит классов
+            if (classes === c) return true; // e не содержит классов точно совпадающих по имени
+            // Использование RegExp для поиска имени класса
+            // \b - границы слова.
+            return classes.search("\\b" + c + "\\b") != -1;
+        };
+
+        // Добавление класса c к e.className если класс еще не добавлен
+        CSSClassList.prototype.add = function (c) {
+            if (this.contains(c)) return; // ничего не делать если класс уже есть
+            var classes = this.e.className;
+            if (classes && classes[classes.length - 1] != " ")
+                c = " " + c; // добавление пробела если нужно
+            this.e.className += c; // Добавление c к className
+        };
+
+        // Удаление класса c из e.className
+        CSSClassList.prototype.remove = function (c) {
+            // Проверка валидности имени класса c
+            if (c.length === 0 || c.indexOf(" ") != -1)
+                throw new Error("Invalid class name: '" + c + "'");
+
+            // Удаление всех вхождений класса с и доплонительных пробелов
+            var pattern = new RegExp("\\b" + c + "\\b\\s*", "g");
+            this.e.className = this.e.className.replace(pattern, "");
+        };
+
+        // Добавление c к e.className если класса еще нет и возврат значения true.
+        // Иначе, удаление всех вхождений класса c из e.className и возврат значения false.
+        CSSClassList.prototype.toggle = function (c) {
+            if (this.contains(c)) { // Если e.className содержит c
+                this.remove(c); // удаляем его.
+                return false;
+            }
+            else { // Иначе:
+                this.add(c); // добавляем класс.
+                return true;
+            }
+        };
+
+        // Возвращает сам e.className
+        CSSClassList.prototype.toString = function () { return this.e.className; };
+
+        // Возвращает массив имен из свойства e.className
+        CSSClassList.prototype.toArray = function () {
+            return this.e.className.match(/\b\w+\b/g) || [];
+        };
+
+    </script>
+
+    <style>
+        .class1 {
+            background-color: green;
+        }
+
+        .class2 {
+            color: white;
+        }
+
+        .class3 {
+            border: 2px solid yellow;
+            padding:8px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="div1">Hello world</div>
+    <input id="add1" type="button" value="Add .calss1" />
+    <input id="remove1" type="button" value="Remove .class1" />
+    <input id="add2" type="button" value="Add .calss2" />
+    <input id="remove2" type="button" value="Remove .calss2" />
+    <input id="toggle" type="button" value="Toggle .calss3" />
+
+    <script>
+        var div1 = document.getElementById("div1"),
+            add1 = document.getElementById("add1"),
+            add2 = document.getElementById("add2"),
+            remove1 = document.getElementById("remove1"),
+            remove2 = document.getElementById("remove2"),
+            toggle = document.getElementById("toggle");
+
+        add1.addEventListener("click", function () {
+            classList(div1).add("class1");
+        });
+
+        add2.addEventListener("click", function () {
+            classList(div1).add("class2");
+        });
+
+        remove1.addEventListener("click", function () {
+            classList(div1).remove("class1");
+        });
+
+        remove2.addEventListener("click", function () {
+            classList(div1).remove("class2");
+        });
+
+        toggle.addEventListener("click", function () {
+            classList(div1).toggle("class3");
+        });
+    </script>
+</body>
+
+</html>

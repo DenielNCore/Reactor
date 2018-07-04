@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>post shorthand method</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+
+            $("#btn").click(function () {
+
+                // Создание GET запроса для ресурса http://edu.cbsystematics.com/temp/getHandler.ashx
+                $.post("http://edu.cbsystematics.com/temp/postHandler.ashx", { a: 1, b: 2 })
+                    .done(function (res) {
+                        $("#output").html(res)
+                    });
+
+                //$.ajax({
+                //    type: "POST",
+                //    url: url,
+                //    data: data,
+                //    success: success,
+                //    dataType: dataType
+                //});
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <button id="btn">Post</button>
+    <p id="output"></p>
+</body>
+</html>

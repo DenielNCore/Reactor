@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>зарезервированные ключевые слова</title>
+    <script src="../jquery.1.11.1.js"></script>
+    <script>
+        $(function () {
+            // jQuery для внутреннего использования применяет ключи events, handle и ключи, которые начинаются с нижнего подчёркивания
+            // Использование следующих ключей желательно избегать
+            $("body").data("events", 1);
+            $("body").data("handle", 1);
+            $("body").data("_foo", 1);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+

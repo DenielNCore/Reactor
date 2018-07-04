@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Функция Animate()</title>
+
+    <script src="../jquery.1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        // функция animate() - принимает желаемые CSS значения объекта и время за которые эти значения должны быть установлены.
+
+        $(document).ready(function () {
+
+            $("#b1").click(function () {
+                $("#id1").animate(
+                    {
+                        left: '+=50px'
+                    }, "fast");
+            });
+
+            $("#b2").click(function () {
+                $("#id1").animate(
+                    {
+                        top: '+=50px'
+                    }, "fast");
+            });
+
+        });
+
+    </script>
+    <style type="text/css">
+        #id1 {
+            background-color: Green;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:50px;
+            left:20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="b1">Go Right</button>
+    <button id="b2">Go Down</button>
+    <div id="id1">
+    </div>
+</body>
+</html>
