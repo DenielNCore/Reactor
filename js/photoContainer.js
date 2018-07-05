@@ -14,8 +14,8 @@ function Photoes(photoes, parent) {
     }
 
     function inputChange() {
-        $input = $(`input`);
-        $q =$(`.searchPhoto > div`);
+        let $input = $(`input`);
+        let $q =$(`.searchPhoto > div`);
         $input.on(`input`, () => {
             let text = $input.val();
             let photo;
@@ -23,16 +23,20 @@ function Photoes(photoes, parent) {
             photo = photoNames.indexOf(text);
             if(text===photoNames[photo]) {
                 spawnPhotoes(photo);
-                $(`#one`).offset({top: 363});
-                $(`#two`).offset({top: 268});
-                $(`#three`).offset({top: 363});
-                $(`#four`).offset({top: 511});
+                $el.children().animate({
+                    top: "-=200"
+                },{duration: 2000,
+                    complete: function() {
+                    }
+                });
             } else {
-                $(`#one`).offset({top: 563});
-                $(`#two`).offset({top: 468});
-                $(`#three`).offset({top: 563});
-                $(`#four`).offset({top: 711});
-                $el.children().remove();
+                $el.children().animate({
+                    top: "+=1400"
+                },{duration: 2000,
+                    complete: function() {
+                        $(this).remove();
+                    }
+                });
             }
         })
     }
