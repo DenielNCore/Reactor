@@ -1,1 +1,0 @@
-﻿(function () { for (var a = 0; 100 > a; a++); })(); (function () { alert("test") })(); (function () { })();
